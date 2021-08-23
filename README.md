@@ -33,13 +33,13 @@ the order of the flags do not matter but both are required <br />
 
 # Build Instructions
 ## CMAKE
-The CodeGenerator file can be compiled using cmake
-Make a build folder
+The CodeGenerator file can be compiled using cmake <br />
+1. Make a build folder
 <pre>
 mkdir build
 cd build
 </pre>
-Run CMAKE
+2. Run CMAKE
 <pre>
 cmake ../src
 cmake --build .
