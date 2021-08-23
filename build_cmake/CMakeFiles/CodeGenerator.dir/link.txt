@@ -1,1 +1,0 @@
-/opt/homebrew/bin/g++-11  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/CodeGenerator.dir/main.cpp.o CMakeFiles/CodeGenerator.dir/FileReader.cpp.o CMakeFiles/CodeGenerator.dir/FileCreator.cpp.o -o CodeGenerator 
