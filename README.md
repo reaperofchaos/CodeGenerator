@@ -16,10 +16,19 @@ The code is run using the command line <br />
 ./CodeGenerator &lt;input filename&gt; -t CPP -o &lt;output filename&gt;
 </pre>
 the order of the flags do not matter but both are required <br />
+
 <pre>
--t  - output type - at this time, the only option is CPP, but python and other formats will be added soon
--o - output file - name of the output file. 
-The output file extension could be anything but any resulting code will be written in C++ at this time
+<b>-t</b> [OUTPUT TYPE]        Output Type
+                     REQUIRED
+                     Specify the type of code generated to build
+                            <em>CPP</em>   - C++ <br />
+                  
+
+<b>-o</b> [FILENAME]        outputFile
+                     REQUIRED
+                     The output file extension could be anything 
+                     but any resulting code will be written in C++ 
+                     at this time
 </pre>
 
 # Build Instructions
