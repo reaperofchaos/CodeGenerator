@@ -13,7 +13,7 @@ This should speed up any modifications needed to automate a class if only a few 
 The code is run using the command line <br />
 
 <pre>
-./CodeGenerator &lt;input filename>&gt; -t CPP -o &lt;output filename&gt;
+./CodeGenerator &lt;input filename&gt; -t CPP -o &lt;output filename&gt;
 </pre>
 the order of the flags do not matter but both are required <br />
 <pre>
