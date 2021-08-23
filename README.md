@@ -18,10 +18,10 @@ The code is run using the command line <br />
 the order of the flags do not matter but both are required <br />
 
 <pre>
-<b>-t</b> [OUTPUT TYPE]        Output Type
+<b>-t</b> [OUTPUT TYPE] Output Type
                      REQUIRED
                      Specify the type of code generated to build
-                            <em>CPP</em>   - C++ <br />
+                     <em>CPP</em>   - C++ <br />
                   
 
 <b>-o</b> [FILENAME]        outputFile
