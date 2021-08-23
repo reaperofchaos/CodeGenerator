@@ -12,12 +12,16 @@ This should speed up any modifications needed to automate a class if only a few 
 # Usage
 The code is run using the command line <br />
 
-./CodeGenerator <input filename> -t CPP -o <output filename> <br />
+<pre>
+./CodeGenerator <input filename> -t CPP -o <output filename>
+</pre>
 the order of the flags do not matter but both are required <br />
 <pre>
 -t  - output type - at this time, the only option is CPP, but python and other formats will be added soon
--o - output file - name of the output file. It could be anything but any resulting code will be written in C++ at this time
+-o - output file - name of the output file. 
+The output file extension could be anything but any resulting code will be written in C++ at this time
 </pre>
+
 # Build Instructions
 ## CMAKE
 The CodeGenerator file can be compiled using cmake
