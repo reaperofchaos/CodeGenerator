@@ -1,5 +1,5 @@
 # CodeGenerator
-Reads a file and generates a cpp file to build copies of that file
+Reads a file and generates a cpp file or py file to build copies of that file
 <br />
 
 # Description
