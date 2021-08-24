@@ -1,0 +1,54 @@
+\hypertarget{_file_reader_8h_source}{}\doxysection{File\+Reader.\+h}
+\label{_file_reader_8h_source}\index{src/FileReader.h@{src/FileReader.h}}
+\mbox{\hyperlink{_file_reader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{5 \textcolor{comment}{/***************************************************************************/}}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_file_reader}{FileReader}}\{}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keyword}{private}:}
+\DoxyCodeLine{16         std::string filename; }
+\DoxyCodeLine{18         std::ifstream in; }
+\DoxyCodeLine{19         std::vector<std::string> lines; }
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{25         \mbox{\hyperlink{class_file_reader_a615dcb2443cad1f2ca123c7c0c334480}{FileReader}}()\{\}}
+\DoxyCodeLine{31         \mbox{\hyperlink{class_file_reader_a4ff56fe7ddb4697eb47bcc09346b137a}{FileReader}}(std::string fileName)}
+\DoxyCodeLine{32                 \{}
+\DoxyCodeLine{33                     this-\/>filename = fileName;}
+\DoxyCodeLine{34                     this-\/>in.open(filename, std::ios::in);}
+\DoxyCodeLine{35                 \}}
+\DoxyCodeLine{41         std::string \mbox{\hyperlink{class_file_reader_ac19ed8bcd30f148cc301fd8f7e224eaf}{getFileName}}()\{\textcolor{keywordflow}{return} this-\/>filename;\}}
+\DoxyCodeLine{47         std::vector<std::string>  \mbox{\hyperlink{class_file_reader_a882a17cd96ee064e46a6e1fcd329ae3c}{getLines}}()\{\textcolor{keywordflow}{return} this-\/>lines;\}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{53         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_reader_a1036120d4474f706ec7faab43f2468dc}{read}}()}
+\DoxyCodeLine{54         \{}
+\DoxyCodeLine{55             std::cout << \textcolor{stringliteral}{"{}Reading file, "{}} << this-\/>filename << \textcolor{stringliteral}{"{}. \(\backslash\)n"{}}; }
+\DoxyCodeLine{56             \textcolor{keywordtype}{int} i = 0; }
+\DoxyCodeLine{57             \textcolor{keywordflow}{for}(std::string line; std::getline(this-\/>in, line); )}
+\DoxyCodeLine{58             \{}
+\DoxyCodeLine{59                 line = \mbox{\hyperlink{class_file_reader_a14ffa1e1f3877b7cf816738d803a4190}{ReplaceAll}}(line, \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}, \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)"{}"{}}); \textcolor{comment}{//replace all new lines in strings with escaped new lines}}
+\DoxyCodeLine{60                 line = \mbox{\hyperlink{class_file_reader_a14ffa1e1f3877b7cf816738d803a4190}{ReplaceAll}}(line, \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)n"{}}, \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)n"{}}); \textcolor{comment}{//replace all new lines in strings with escaped new lines}}
+\DoxyCodeLine{61                 line = \mbox{\hyperlink{class_file_reader_a14ffa1e1f3877b7cf816738d803a4190}{ReplaceAll}}(line, \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)r"{}}, \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)r"{}}); \textcolor{comment}{//replace all returns in strings with escaped returns}}
+\DoxyCodeLine{62                 line = \mbox{\hyperlink{class_file_reader_a14ffa1e1f3877b7cf816738d803a4190}{ReplaceAll}}(line, \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)t"{}}, \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)t"{}}); \textcolor{comment}{//replace all tabs in strings with escaped tabs}}
+\DoxyCodeLine{63                 this-\/>lines.push\_back(line);}
+\DoxyCodeLine{64                 i++;}
+\DoxyCodeLine{65             \}}
+\DoxyCodeLine{66         \}}
+\DoxyCodeLine{67         }
+\DoxyCodeLine{76         std::string \mbox{\hyperlink{class_file_reader_a14ffa1e1f3877b7cf816738d803a4190}{ReplaceAll}}(std::string str, \textcolor{keyword}{const} std::string\& from, \textcolor{keyword}{const} std::string\& to) }
+\DoxyCodeLine{77         \{}
+\DoxyCodeLine{78             \textcolor{keywordtype}{size\_t} start\_pos = 0;}
+\DoxyCodeLine{79             \textcolor{keywordflow}{while}((start\_pos = str.find(from, start\_pos)) != std::string::npos) }
+\DoxyCodeLine{80             \{}
+\DoxyCodeLine{81                 str.replace(start\_pos, from.length(), to);}
+\DoxyCodeLine{82                 start\_pos += to.length(); }
+\DoxyCodeLine{83             \}}
+\DoxyCodeLine{84             \textcolor{keywordflow}{return} str;}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86     }
+\DoxyCodeLine{87 \};}
+
+\end{DoxyCode}

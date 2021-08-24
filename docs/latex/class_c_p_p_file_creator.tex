@@ -1,0 +1,81 @@
+\hypertarget{class_c_p_p_file_creator}{}\doxysection{CPPFile\+Creator Class Reference}
+\label{class_c_p_p_file_creator}\index{CPPFileCreator@{CPPFileCreator}}
+
+
+{\ttfamily \#include $<$CPPFile\+Creator.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_p_p_file_creator_a2a90b805ab1fba336322e75cbecfba7d}{CPPFile\+Creator}} ()
+\item 
+\mbox{\hyperlink{class_c_p_p_file_creator_abb046bc19f19b961801f80d641845878}{CPPFile\+Creator}} (std\+::string output\+File\+Name, std\+::vector$<$ std\+::string $>$ lines)
+\item 
+void \mbox{\hyperlink{class_c_p_p_file_creator_a1466e193997fdecaf9c98898ef5a6437}{create\+Header}} ()
+\item 
+void \mbox{\hyperlink{class_c_p_p_file_creator_a76bbe843fda7b20f534d8e30969337e2}{create\+Closer}} ()
+\item 
+void \mbox{\hyperlink{class_c_p_p_file_creator_acb2aa5ba267b44fdc85d780988ba7633}{write}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_c_p_p_file_creator}{CPPFile\+Creator}}
+
+Class creates a CPP File to build files containing the strings in the lines vector 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_p_p_file_creator_a2a90b805ab1fba336322e75cbecfba7d}\label{class_c_p_p_file_creator_a2a90b805ab1fba336322e75cbecfba7d}} 
+\index{CPPFileCreator@{CPPFileCreator}!CPPFileCreator@{CPPFileCreator}}
+\index{CPPFileCreator@{CPPFileCreator}!CPPFileCreator@{CPPFileCreator}}
+\doxysubsubsection{\texorpdfstring{CPPFileCreator()}{CPPFileCreator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily CPPFile\+Creator\+::\+CPPFile\+Creator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor \mbox{\Hypertarget{class_c_p_p_file_creator_abb046bc19f19b961801f80d641845878}\label{class_c_p_p_file_creator_abb046bc19f19b961801f80d641845878}} 
+\index{CPPFileCreator@{CPPFileCreator}!CPPFileCreator@{CPPFileCreator}}
+\index{CPPFileCreator@{CPPFileCreator}!CPPFileCreator@{CPPFileCreator}}
+\doxysubsubsection{\texorpdfstring{CPPFileCreator()}{CPPFileCreator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily CPPFile\+Creator\+::\+CPPFile\+Creator (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+File\+Name,  }\item[{std\+::vector$<$ std\+::string $>$}]{lines }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor that takes an output file name, and lines vector Sets the properties to the values provided and opens the output file using the out file handle 
+\begin{DoxyParams}{Parameters}
+{\em output\+File\+Name} & a string argument. \\
+\hline
+{\em lines} & a vector of strings. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_p_p_file_creator_a76bbe843fda7b20f534d8e30969337e2}\label{class_c_p_p_file_creator_a76bbe843fda7b20f534d8e30969337e2}} 
+\index{CPPFileCreator@{CPPFileCreator}!createCloser@{createCloser}}
+\index{createCloser@{createCloser}!CPPFileCreator@{CPPFileCreator}}
+\doxysubsubsection{\texorpdfstring{createCloser()}{createCloser()}}
+{\footnotesize\ttfamily void CPPFile\+Creator\+::create\+Closer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Writes C++ code to the out file handle that closes the written codes output file handle and main function \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_p_p_file_creator_a1466e193997fdecaf9c98898ef5a6437}\label{class_c_p_p_file_creator_a1466e193997fdecaf9c98898ef5a6437}} 
+\index{CPPFileCreator@{CPPFileCreator}!createHeader@{createHeader}}
+\index{createHeader@{createHeader}!CPPFileCreator@{CPPFileCreator}}
+\doxysubsubsection{\texorpdfstring{createHeader()}{createHeader()}}
+{\footnotesize\ttfamily void CPPFile\+Creator\+::create\+Header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Writes C++ code to the out file handle to build a main function that parses a file\+Name argument and creates an output file handle \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_p_p_file_creator_acb2aa5ba267b44fdc85d780988ba7633}\label{class_c_p_p_file_creator_acb2aa5ba267b44fdc85d780988ba7633}} 
+\index{CPPFileCreator@{CPPFileCreator}!write@{write}}
+\index{write@{write}!CPPFileCreator@{CPPFileCreator}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void CPPFile\+Creator\+::write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Writes C++ code to the out file handle that writes c++ code to write each line in the lines vector \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_c_p_p_file_creator_8h}{CPPFile\+Creator.\+h}}\end{DoxyCompactItemize}

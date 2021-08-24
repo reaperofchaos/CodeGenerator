@@ -1,0 +1,200 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}File\+Reader.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}File\+Creator.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_ab531885f750ae0f53892591944d3cf92}{handle\+Arguments}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, std\+::string \&file\+Name, \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \&output\+Type, std\+::string \&output\+File\+Name)
+\item 
+bool \mbox{\hyperlink{main_8cpp_a9d3aa96433c354f03ae59b49ea7fcbbe}{validate\+File\+Type}} (std\+::string \&file\+Name)
+\item 
+std\+::string \mbox{\hyperlink{main_8cpp_aa6a697e189e9fc47de510236e29c9f65}{string\+To\+Lower}} (std\+::string str)
+\item 
+bool \mbox{\hyperlink{main_8cpp_a3e4d1c8b434033f0e0ae82adc46a065d}{flag\+Exists}} (std\+::string flag, std\+::vector$<$ std\+::string $>$ arguments)
+\item 
+std\+::string \mbox{\hyperlink{main_8cpp_a241bd02db4520139ed704ad907b9a546}{get\+Flag\+Argument}} (std\+::string flag, std\+::vector$<$ std\+::string $>$ arguments)
+\item 
+void \mbox{\hyperlink{main_8cpp_adaa0e11ed6bca58a4c17f72f6ec9f2d7}{check\+For\+Output\+File\+Name}} (std\+::string \&output\+File\+Name, \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \&output\+Type, int \&error\+Code, std\+::vector$<$ std\+::string $>$ \&arguments)
+\item 
+bool \mbox{\hyperlink{main_8cpp_a0cee76cefc7d2274204b7a8f19d810f8}{validate\+Output\+Type}} (std\+::string \&output\+File\+Name, \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \&output\+File\+Type)
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{main_8cpp_a5848c8e45141e64587f7817c191a4d52}{Supported\+File\+Types}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{main_8cpp_ac5a1988d0f7b7046a1b31385ea342dcd}{Supported\+Output\+Types}} = \{ \char`\"{}.CPP\char`\"{}, \char`\"{}.cpp\char`\"{}, \char`\"{}.PY\char`\"{}, \char`\"{}.py\char`\"{} \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_adaa0e11ed6bca58a4c17f72f6ec9f2d7}\label{main_8cpp_adaa0e11ed6bca58a4c17f72f6ec9f2d7}} 
+\index{main.cpp@{main.cpp}!checkForOutputFileName@{checkForOutputFileName}}
+\index{checkForOutputFileName@{checkForOutputFileName}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{checkForOutputFileName()}{checkForOutputFileName()}}
+{\footnotesize\ttfamily void check\+For\+Output\+File\+Name (\begin{DoxyParamCaption}\item[{std\+::string \&}]{output\+File\+Name,  }\item[{\mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \&}]{output\+File\+Type,  }\item[{int \&}]{error\+Code,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{arguments }\end{DoxyParamCaption})}
+
+Function that checks if -\/o flag exists and if an output file\+Name is provided using the get\+Flag\+Argument. Then it valideates the output\+File\+Type using the validate\+Output\+Type function. If an error is found the error code is set to 1. 
+\begin{DoxyParams}{Parameters}
+{\em output\+File\+Name} & string \\
+\hline
+{\em output\+File\+Type} & ile\+Creator\+::\+Output\+Types Enum Value for output type \\
+\hline
+{\em error\+Code} & int \\
+\hline
+{\em arguments} & vector of strings \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a3e4d1c8b434033f0e0ae82adc46a065d}\label{main_8cpp_a3e4d1c8b434033f0e0ae82adc46a065d}} 
+\index{main.cpp@{main.cpp}!flagExists@{flagExists}}
+\index{flagExists@{flagExists}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{flagExists()}{flagExists()}}
+{\footnotesize\ttfamily bool flag\+Exists (\begin{DoxyParamCaption}\item[{std\+::string}]{flag,  }\item[{std\+::vector$<$ std\+::string $>$}]{arguments }\end{DoxyParamCaption})}
+
+Function that checks if a flag exists in a set of vector of provided arguments. Returns true if so and false if not. 
+\begin{DoxyParams}{Parameters}
+{\em flag} & string \\
+\hline
+{\em arguments} & vector of strings \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a241bd02db4520139ed704ad907b9a546}\label{main_8cpp_a241bd02db4520139ed704ad907b9a546}} 
+\index{main.cpp@{main.cpp}!getFlagArgument@{getFlagArgument}}
+\index{getFlagArgument@{getFlagArgument}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getFlagArgument()}{getFlagArgument()}}
+{\footnotesize\ttfamily std\+::string get\+Flag\+Argument (\begin{DoxyParamCaption}\item[{std\+::string}]{flag,  }\item[{std\+::vector$<$ std\+::string $>$}]{arguments }\end{DoxyParamCaption})}
+
+Function that checks if a flag exists in a vector of provided arguments and returns the argument immediately after it. Returns \char`\"{}-\/1\char`\"{} if not found. ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em flag} & string \\
+\hline
+{\em arguments} & vector of strings \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_ab531885f750ae0f53892591944d3cf92}\label{main_8cpp_ab531885f750ae0f53892591944d3cf92}} 
+\index{main.cpp@{main.cpp}!handleArguments@{handleArguments}}
+\index{handleArguments@{handleArguments}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{handleArguments()}{handleArguments()}}
+{\footnotesize\ttfamily int handle\+Arguments (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{std\+::string \&}]{file\+Name,  }\item[{\mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \&}]{output\+Type,  }\item[{std\+::string \&}]{output\+File\+Name }\end{DoxyParamCaption})}
+
+Code Generator
+
+Reads a file and generates a cpp or py file to build copies of that file
+
+Function that handles user provided arguments Checks to make sure required file name, -\/o flag and output file name are set by the user and if not errors are generated. Validates file\+Name with validate\+File\+Type function and output file\+Name using check\+For\+Output\+File\+Name function to make sure they are supported and generates an error if not. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & integer for total number of arguments \\
+\hline
+{\em argv} & a character array of arguments \\
+\hline
+{\em file\+Name} & string \\
+\hline
+{\em output\+Types} & ile\+Creator\+::\+Output\+Types Enum Value for output type \\
+\hline
+{\em output\+File\+Name} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Main function that handles provided arguments reads the provided file with the \mbox{\hyperlink{class_file_reader}{File\+Reader}} class and creates a resulting output file using the \mbox{\hyperlink{class_file_creator}{File\+Creator}} class 
+\begin{DoxyParams}{Parameters}
+{\em argc} & integer for total number of arguments \\
+\hline
+{\em argv} & a character array of arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_aa6a697e189e9fc47de510236e29c9f65}\label{main_8cpp_aa6a697e189e9fc47de510236e29c9f65}} 
+\index{main.cpp@{main.cpp}!stringToLower@{stringToLower}}
+\index{stringToLower@{stringToLower}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{stringToLower()}{stringToLower()}}
+{\footnotesize\ttfamily std\+::string string\+To\+Lower (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+Function that converts a string to lower case Taken from //http\+://cplusplus.com/forum/beginner/218745/ extension in the Supported\+Output\+Types vector and returns true if sp and false if not. Also sets the output\+Types to the appropriate \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} enum value 
+\begin{DoxyParams}{Parameters}
+{\em str} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a9d3aa96433c354f03ae59b49ea7fcbbe}\label{main_8cpp_a9d3aa96433c354f03ae59b49ea7fcbbe}} 
+\index{main.cpp@{main.cpp}!validateFileType@{validateFileType}}
+\index{validateFileType@{validateFileType}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{validateFileType()}{validateFileType()}}
+{\footnotesize\ttfamily bool validate\+File\+Type (\begin{DoxyParamCaption}\item[{std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+
+Function that checks if a file\+Name has an extension in the Supported\+File\+Types vector and returns true if sp and false if not. 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a0cee76cefc7d2274204b7a8f19d810f8}\label{main_8cpp_a0cee76cefc7d2274204b7a8f19d810f8}} 
+\index{main.cpp@{main.cpp}!validateOutputType@{validateOutputType}}
+\index{validateOutputType@{validateOutputType}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{validateOutputType()}{validateOutputType()}}
+{\footnotesize\ttfamily bool validate\+Output\+Type (\begin{DoxyParamCaption}\item[{std\+::string \&}]{output\+File\+Name,  }\item[{\mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \&}]{output\+File\+Type }\end{DoxyParamCaption})}
+
+Function that checks if an output file\+Name has an extension in the Supported\+Output\+Types vector and returns true if sp and false if not. Also sets the output\+Types to the appropriate \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} enum value 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & string \\
+\hline
+{\em output\+Types} & ile\+Creator\+::\+Output\+Types Enum Value for output type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_a5848c8e45141e64587f7817c191a4d52}\label{main_8cpp_a5848c8e45141e64587f7817c191a4d52}} 
+\index{main.cpp@{main.cpp}!SupportedFileTypes@{SupportedFileTypes}}
+\index{SupportedFileTypes@{SupportedFileTypes}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{SupportedFileTypes}{SupportedFileTypes}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Supported\+File\+Types}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{ \textcolor{stringliteral}{"{}.html"{}}, \textcolor{stringliteral}{"{}.HTML"{}}, \textcolor{stringliteral}{"{}.C"{}}, \textcolor{stringliteral}{"{}.c"{}}, }
+\DoxyCodeLine{                                                \textcolor{stringliteral}{"{}.cpp"{}}, \textcolor{stringliteral}{"{}.CPP"{}},\textcolor{stringliteral}{"{}.php"{}}, \textcolor{stringliteral}{"{}.PHP"{}},}
+\DoxyCodeLine{                                                \textcolor{stringliteral}{"{}.py"{}}, \textcolor{stringliteral}{"{}.PY"{}}, \textcolor{stringliteral}{"{}.JAVA"{}}, \textcolor{stringliteral}{"{}.java"{}},}
+\DoxyCodeLine{                                                \textcolor{stringliteral}{"{}.kt"{}}, \textcolor{stringliteral}{"{}.KT"{}}, \textcolor{stringliteral}{"{}.js"{}}, \textcolor{stringliteral}{"{}.JS"{}}, }
+\DoxyCodeLine{                                                \textcolor{stringliteral}{"{}.txt"{}}, \textcolor{stringliteral}{"{}.TXT"{}}, \textcolor{stringliteral}{"{}.h"{}}, \textcolor{stringliteral}{"{}.H"{}} \}}
+
+\end{DoxyCode}
+A vector of supported input File Types \mbox{\Hypertarget{main_8cpp_ac5a1988d0f7b7046a1b31385ea342dcd}\label{main_8cpp_ac5a1988d0f7b7046a1b31385ea342dcd}} 
+\index{main.cpp@{main.cpp}!SupportedOutputTypes@{SupportedOutputTypes}}
+\index{SupportedOutputTypes@{SupportedOutputTypes}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{SupportedOutputTypes}{SupportedOutputTypes}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Supported\+Output\+Types = \{ \char`\"{}.CPP\char`\"{}, \char`\"{}.cpp\char`\"{}, \char`\"{}.PY\char`\"{}, \char`\"{}.py\char`\"{} \}}
+
+A vector of supported output File Types 

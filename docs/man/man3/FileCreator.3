@@ -1,0 +1,96 @@
+.TH "FileCreator" 3 "Tue Aug 24 2021" "CodeGenerator" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FileCreator
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FileCreator\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBOutputTypes\fP { \fBCPP\fP, \fBPY\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFileCreator\fP ()"
+.br
+.ti -1c
+.RI "\fBFileCreator\fP (std::string &outputFileName, \fBOutputTypes\fP &outputType, std::vector< std::string > &lines)"
+.br
+.ti -1c
+.RI "void \fBwrite\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFileCreator::OutputTypes\fP \fBCPP\fP"
+.br
+.ti -1c
+.RI "enum \fBFileCreator::OutputTypes\fP \fBPY\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBFileCreator\fP
+.PP
+Class designed to abstract the process of writing out put files\&. The output type is parsed and then the output file and lines are passed off to the appropriate class 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBFileCreator::OutputTypes\fP"
+An enum\&. Stores output file types 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICPP \fP\fP
+enum value CPP\&. 
+.TP
+\fB\fIPY \fP\fP
+enum value PY\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FileCreator::FileCreator ()\fC [inline]\fP"
+Default constructor 
+.SS "FileCreator::FileCreator (std::string & outputFileName, \fBOutputTypes\fP & outputType, std::vector< std::string > & lines)\fC [inline]\fP"
+Constructor that takes an output file name, output file type and lines vector Sets the properties to the values provided 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoutputFileName\fP a string argument\&. 
+.br
+\fIoutputType\fP an OutputTypes enum value\&. 
+.br
+\fIlines\fP a vector of strings\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void FileCreator::write ()\fC [inline]\fP"
+Parses the outputTypes property and creates the appropiate \fBPythonFileCreator\fP or CPPCreator class\&. Then the class's write function is called 
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "enum \fBFileCreator::OutputTypes\fP FileCreator::CPP"
+
+.SS "enum \fBFileCreator::OutputTypes\fP FileCreator::PY"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CodeGenerator from the source code\&.

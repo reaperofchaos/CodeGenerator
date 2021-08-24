@@ -1,0 +1,52 @@
+\hypertarget{_file_creator_8h_source}{}\doxysection{File\+Creator.\+h}
+\label{_file_creator_8h_source}\index{src/FileCreator.h@{src/FileCreator.h}}
+\mbox{\hyperlink{_file_creator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_python_file_creator_8h}{PythonFileCreator.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_c_p_p_file_creator_8h}{CPPFileCreator.h}}"{}}}
+\DoxyCodeLine{6 \textcolor{comment}{/***************************************************************************/}}
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_file_creator}{FileCreator}}}
+\DoxyCodeLine{16 \{  }
+\DoxyCodeLine{17     \textcolor{keyword}{public}:  }
+\DoxyCodeLine{22         \textcolor{keyword}{enum} \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{OutputTypes}} \{ }
+\DoxyCodeLine{23           \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07ba1f9e525bd6fde8e81159c1c112dc61c4}{CPP}}, }
+\DoxyCodeLine{24           \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07babd5447336de68cde05a3b9eec8c52f58}{PY}}, }
+\DoxyCodeLine{25          \}    }
+\DoxyCodeLine{26         \textcolor{keyword}{enum} \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{OutputTypes}} \{\mbox{\hyperlink{class_file_creator_a238a978d162502d11fbc6bf28373ef36}{CPP}}, \mbox{\hyperlink{class_file_creator_adfdfefc573a6deb0538b462ca09594e7}{PY}}\};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keyword}{private}:}
+\DoxyCodeLine{29         std::string outputFileName; }
+\DoxyCodeLine{30         \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{OutputTypes}} outputType; }
+\DoxyCodeLine{31         std::vector<std::string> lines; }
+\DoxyCodeLine{33     \textcolor{keyword}{public}: }
+\DoxyCodeLine{37         \mbox{\hyperlink{class_file_creator_a6df7e4c07875b9394746be37b998640c}{FileCreator}}()\{\}}
+\DoxyCodeLine{46         \mbox{\hyperlink{class_file_creator_af90a376245098dd667fa63d1b49e5535}{FileCreator}}(std::string\& outputFileName, \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{OutputTypes}}\& outputType, std::vector<std::string>\& lines)}
+\DoxyCodeLine{47         \{}
+\DoxyCodeLine{48             this-\/>outputFileName = outputFileName;}
+\DoxyCodeLine{49             this-\/>outputType = outputType;}
+\DoxyCodeLine{50             this-\/>lines = lines; }
+\DoxyCodeLine{51         \}}
+\DoxyCodeLine{58         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_creator_a1067d9c014dbad57da78e766c9820016}{write}}()}
+\DoxyCodeLine{59         \{}
+\DoxyCodeLine{60             \textcolor{keywordflow}{switch}(this-\/>outputType)}
+\DoxyCodeLine{61             \{}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{case} \mbox{\hyperlink{class_file_creator_adfdfefc573a6deb0538b462ca09594e7}{PY}}:}
+\DoxyCodeLine{63                 \{}
+\DoxyCodeLine{64                     \mbox{\hyperlink{class_python_file_creator}{PythonFileCreator}} pyFile = \mbox{\hyperlink{class_python_file_creator}{PythonFileCreator}}(this-\/>outputFileName, this-\/>lines);}
+\DoxyCodeLine{65                     pyFile.\mbox{\hyperlink{class_python_file_creator_a6e6fbb118adcb226260e05ad45a449aa}{write}}();}
+\DoxyCodeLine{66                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{67                 \}}
+\DoxyCodeLine{68                 \textcolor{keywordflow}{case} \mbox{\hyperlink{class_file_creator_a238a978d162502d11fbc6bf28373ef36}{CPP}}:}
+\DoxyCodeLine{69                 \{}
+\DoxyCodeLine{70                     \mbox{\hyperlink{class_c_p_p_file_creator}{CPPFileCreator}} cppFile = \mbox{\hyperlink{class_c_p_p_file_creator}{CPPFileCreator}}(this-\/>outputFileName, this-\/>lines);}
+\DoxyCodeLine{71                     cppFile.\mbox{\hyperlink{class_c_p_p_file_creator_acb2aa5ba267b44fdc85d780988ba7633}{write}}();}
+\DoxyCodeLine{72                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{73                 \}}
+\DoxyCodeLine{74             \}}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76 \};}
+
+\end{DoxyCode}

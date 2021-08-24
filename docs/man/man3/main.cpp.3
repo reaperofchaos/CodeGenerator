@@ -1,0 +1,217 @@
+.TH "src/main.cpp" 3 "Tue Aug 24 2021" "CodeGenerator" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/main.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <cstring>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include 'FileReader\&.h'\fP
+.br
+\fC#include 'FileCreator\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBhandleArguments\fP (int argc, char *argv[], std::string &fileName, \fBFileCreator::OutputTypes\fP &outputType, std::string &outputFileName)"
+.br
+.ti -1c
+.RI "bool \fBvalidateFileType\fP (std::string &fileName)"
+.br
+.ti -1c
+.RI "std::string \fBstringToLower\fP (std::string str)"
+.br
+.ti -1c
+.RI "bool \fBflagExists\fP (std::string flag, std::vector< std::string > arguments)"
+.br
+.ti -1c
+.RI "std::string \fBgetFlagArgument\fP (std::string flag, std::vector< std::string > arguments)"
+.br
+.ti -1c
+.RI "void \fBcheckForOutputFileName\fP (std::string &outputFileName, \fBFileCreator::OutputTypes\fP &outputType, int &errorCode, std::vector< std::string > &arguments)"
+.br
+.ti -1c
+.RI "bool \fBvalidateOutputType\fP (std::string &outputFileName, \fBFileCreator::OutputTypes\fP &outputFileType)"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::string > \fBSupportedFileTypes\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBSupportedOutputTypes\fP = { '\&.CPP', '\&.cpp', '\&.PY', '\&.py' }"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void checkForOutputFileName (std::string & outputFileName, \fBFileCreator::OutputTypes\fP & outputFileType, int & errorCode, std::vector< std::string > & arguments)"
+Function that checks if -o flag exists and if an output fileName is provided using the getFlagArgument\&. Then it valideates the outputFileType using the validateOutputType function\&. If an error is found the error code is set to 1\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoutputFileName\fP string 
+.br
+\fIoutputFileType\fP ileCreator::OutputTypes Enum Value for output type 
+.br
+\fIerrorCode\fP int 
+.br
+\fIarguments\fP vector of strings 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "bool flagExists (std::string flag, std::vector< std::string > arguments)"
+Function that checks if a flag exists in a set of vector of provided arguments\&. Returns true if so and false if not\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP string 
+.br
+\fIarguments\fP vector of strings 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.SS "std::string getFlagArgument (std::string flag, std::vector< std::string > arguments)"
+Function that checks if a flag exists in a vector of provided arguments and returns the argument immediately after it\&. Returns '-1' if not found\&. 
+.br
+ 
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP string 
+.br
+\fIarguments\fP vector of strings 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+string 
+.RE
+.PP
+
+.SS "int handleArguments (int argc, char * argv[], std::string & fileName, \fBFileCreator::OutputTypes\fP & outputType, std::string & outputFileName)"
+Code Generator
+.PP
+Reads a file and generates a cpp or py file to build copies of that file
+.PP
+Function that handles user provided arguments Checks to make sure required file name, -o flag and output file name are set by the user and if not errors are generated\&. Validates fileName with validateFileType function and output fileName using checkForOutputFileName function to make sure they are supported and generates an error if not\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIargc\fP integer for total number of arguments 
+.br
+\fIargv\fP a character array of arguments 
+.br
+\fIfileName\fP string 
+.br
+\fIoutputTypes\fP ileCreator::OutputTypes Enum Value for output type 
+.br
+\fIoutputFileName\fP string 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int 
+.RE
+.PP
+
+.SS "int main (int argc, char * argv[])"
+Main function that handles provided arguments reads the provided file with the \fBFileReader\fP class and creates a resulting output file using the \fBFileCreator\fP class 
+.PP
+\fBParameters\fP
+.RS 4
+\fIargc\fP integer for total number of arguments 
+.br
+\fIargv\fP a character array of arguments 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int 
+.RE
+.PP
+
+.SS "std::string stringToLower (std::string str)"
+Function that converts a string to lower case Taken from //http://cplusplus\&.com/forum/beginner/218745/ extension in the SupportedOutputTypes vector and returns true if sp and false if not\&. Also sets the outputTypes to the appropriate \fBFileCreator::OutputTypes\fP enum value 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP string 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+string 
+.RE
+.PP
+
+.SS "bool validateFileType (std::string & fileName)"
+Function that checks if a fileName has an extension in the SupportedFileTypes vector and returns true if sp and false if not\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfileName\fP string 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.SS "bool validateOutputType (std::string & outputFileName, \fBFileCreator::OutputTypes\fP & outputFileType)"
+Function that checks if an output fileName has an extension in the SupportedOutputTypes vector and returns true if sp and false if not\&. Also sets the outputTypes to the appropriate \fBFileCreator::OutputTypes\fP enum value 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfileName\fP string 
+.br
+\fIoutputTypes\fP ileCreator::OutputTypes Enum Value for output type 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "std::vector<std::string> SupportedFileTypes"
+\fBInitial value:\fP
+.PP
+.nf
+= { "\&.html", "\&.HTML", "\&.C", "\&.c", 
+                                                "\&.cpp", "\&.CPP","\&.php", "\&.PHP",
+                                                "\&.py", "\&.PY", "\&.JAVA", "\&.java",
+                                                "\&.kt", "\&.KT", "\&.js", "\&.JS", 
+                                                "\&.txt", "\&.TXT", "\&.h", "\&.H" }
+.fi
+A vector of supported input File Types 
+.SS "std::vector<std::string> SupportedOutputTypes = { '\&.CPP', '\&.cpp', '\&.PY', '\&.py' }"
+A vector of supported output File Types 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CodeGenerator from the source code\&.

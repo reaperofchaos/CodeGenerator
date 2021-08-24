@@ -1,0 +1,36 @@
+digraph "src/main.cpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="iostream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="cstring",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="FileReader.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_file_reader_8h.html",tooltip=" "];
+  Node5 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="fstream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="algorithm",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="FileCreator.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_file_creator_8h.html",tooltip=" "];
+  Node8 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="PythonFileCreator.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_python_file_creator_8h.html",tooltip=" "];
+  Node9 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="CPPFileCreator.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_c_p_p_file_creator_8h.html",tooltip=" "];
+  Node10 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+}

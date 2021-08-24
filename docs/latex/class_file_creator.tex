@@ -1,0 +1,109 @@
+\hypertarget{class_file_creator}{}\doxysection{File\+Creator Class Reference}
+\label{class_file_creator}\index{FileCreator@{FileCreator}}
+
+
+{\ttfamily \#include $<$File\+Creator.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{Output\+Types}} \{ \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07ba1f9e525bd6fde8e81159c1c112dc61c4}{CPP}}
+, \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07babd5447336de68cde05a3b9eec8c52f58}{PY}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_file_creator_a6df7e4c07875b9394746be37b998640c}{File\+Creator}} ()
+\item 
+\mbox{\hyperlink{class_file_creator_af90a376245098dd667fa63d1b49e5535}{File\+Creator}} (std\+::string \&output\+File\+Name, \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{Output\+Types}} \&output\+Type, std\+::vector$<$ std\+::string $>$ \&lines)
+\item 
+void \mbox{\hyperlink{class_file_creator_a1067d9c014dbad57da78e766c9820016}{write}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \mbox{\hyperlink{class_file_creator_a238a978d162502d11fbc6bf28373ef36}{CPP}}
+\item 
+enum \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} \mbox{\hyperlink{class_file_creator_adfdfefc573a6deb0538b462ca09594e7}{PY}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_file_creator}{File\+Creator}}
+
+Class designed to abstract the process of writing out put files. The output type is parsed and then the output file and lines are passed off to the appropriate class 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_file_creator_afc9922727e49e367a8cdf9792450c07b}\label{class_file_creator_afc9922727e49e367a8cdf9792450c07b}} 
+\index{FileCreator@{FileCreator}!OutputTypes@{OutputTypes}}
+\index{OutputTypes@{OutputTypes}!FileCreator@{FileCreator}}
+\doxysubsubsection{\texorpdfstring{OutputTypes}{OutputTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}}}
+
+An enum. Stores output file types \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CPP@{CPP}!FileCreator@{FileCreator}}\index{FileCreator@{FileCreator}!CPP@{CPP}}}\mbox{\Hypertarget{class_file_creator_afc9922727e49e367a8cdf9792450c07ba1f9e525bd6fde8e81159c1c112dc61c4}\label{class_file_creator_afc9922727e49e367a8cdf9792450c07ba1f9e525bd6fde8e81159c1c112dc61c4}} 
+CPP&enum value CPP. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PY@{PY}!FileCreator@{FileCreator}}\index{FileCreator@{FileCreator}!PY@{PY}}}\mbox{\Hypertarget{class_file_creator_afc9922727e49e367a8cdf9792450c07babd5447336de68cde05a3b9eec8c52f58}\label{class_file_creator_afc9922727e49e367a8cdf9792450c07babd5447336de68cde05a3b9eec8c52f58}} 
+PY&enum value PY. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_file_creator_a6df7e4c07875b9394746be37b998640c}\label{class_file_creator_a6df7e4c07875b9394746be37b998640c}} 
+\index{FileCreator@{FileCreator}!FileCreator@{FileCreator}}
+\index{FileCreator@{FileCreator}!FileCreator@{FileCreator}}
+\doxysubsubsection{\texorpdfstring{FileCreator()}{FileCreator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily File\+Creator\+::\+File\+Creator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor \mbox{\Hypertarget{class_file_creator_af90a376245098dd667fa63d1b49e5535}\label{class_file_creator_af90a376245098dd667fa63d1b49e5535}} 
+\index{FileCreator@{FileCreator}!FileCreator@{FileCreator}}
+\index{FileCreator@{FileCreator}!FileCreator@{FileCreator}}
+\doxysubsubsection{\texorpdfstring{FileCreator()}{FileCreator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily File\+Creator\+::\+File\+Creator (\begin{DoxyParamCaption}\item[{std\+::string \&}]{output\+File\+Name,  }\item[{\mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{Output\+Types}} \&}]{output\+Type,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{lines }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor that takes an output file name, output file type and lines vector Sets the properties to the values provided 
+\begin{DoxyParams}{Parameters}
+{\em output\+File\+Name} & a string argument. \\
+\hline
+{\em output\+Type} & an Output\+Types enum value. \\
+\hline
+{\em lines} & a vector of strings. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_file_creator_a1067d9c014dbad57da78e766c9820016}\label{class_file_creator_a1067d9c014dbad57da78e766c9820016}} 
+\index{FileCreator@{FileCreator}!write@{write}}
+\index{write@{write}!FileCreator@{FileCreator}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void File\+Creator\+::write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Parses the output\+Types property and creates the appropiate \mbox{\hyperlink{class_python_file_creator}{Python\+File\+Creator}} or CPPCreator class. Then the class\textquotesingle{}s write function is called \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_file_creator_a238a978d162502d11fbc6bf28373ef36}\label{class_file_creator_a238a978d162502d11fbc6bf28373ef36}} 
+\index{FileCreator@{FileCreator}!CPP@{CPP}}
+\index{CPP@{CPP}!FileCreator@{FileCreator}}
+\doxysubsubsection{\texorpdfstring{CPP}{CPP}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} File\+Creator\+::\+CPP}
+
+\mbox{\Hypertarget{class_file_creator_adfdfefc573a6deb0538b462ca09594e7}\label{class_file_creator_adfdfefc573a6deb0538b462ca09594e7}} 
+\index{FileCreator@{FileCreator}!PY@{PY}}
+\index{PY@{PY}!FileCreator@{FileCreator}}
+\doxysubsubsection{\texorpdfstring{PY}{PY}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_file_creator_afc9922727e49e367a8cdf9792450c07b}{File\+Creator\+::\+Output\+Types}} File\+Creator\+::\+PY}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_file_creator_8h}{File\+Creator.\+h}}\end{DoxyCompactItemize}

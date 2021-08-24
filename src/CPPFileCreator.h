@@ -1,18 +1,35 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-
+/***************************************************************************//**
+ * CPPFileCreator
+ *
+ * Class creates a CPP File to build files containing the strings in the lines vector
+ *
+ *  ******************************************************************************/
 class CPPFileCreator{
 
     private:
-        std::string outputFileName;
+        std::string outputFileName; /**< Name of Output File */  
 
-        std::ofstream out; 
-        std::vector<std::string> lines;
+        std::ofstream out; /**< Output File Handle */
+        std::vector<std::string> lines; /**< A vector of strings holding the lines in the file */
 
     public:
+        /**
+        * Default constructor
+        */
         CPPFileCreator(){}
 
+       /**
+       * Constructor that takes an output file name, 
+       *  and lines vector
+       * Sets the properties to the values provided
+       * and opens the output file using the out 
+       * file handle
+       * @param outputFileName a string argument.
+       * @param lines a vector of strings.
+       */
         CPPFileCreator(std::string outputFileName, std::vector<std::string> lines)
         {
             this->outputFileName = outputFileName;
@@ -20,6 +37,13 @@ class CPPFileCreator{
             this->out.open(outputFileName, std::ios::out);
         }
 
+        /**
+         * Writes C++ code to the out file handle to
+         * build a main function that
+         * parses a fileName argument and creates an 
+         * output file handle 
+         * @return void
+         */
         void createHeader()
         {
             this->out << "#include <iostream>\n";
@@ -40,6 +64,12 @@ class CPPFileCreator{
             this->out << "\t//Write Lines found in Input File \n"; 
         }
 
+        /**
+        * Writes C++ code to the out file handle 
+        * that closes the written codes output file
+        * handle and main function
+        * @return void
+        */
         void createCloser()
         {
             this->out << "\n";
@@ -48,6 +78,12 @@ class CPPFileCreator{
             this->out << "}";
         }
 
+        /**
+        * Writes C++ code to the out file handle 
+        * that writes c++ code to write each line
+        * in the lines vector
+        * @return void
+        */
         void write()
         {
             std::cout << "Writing constructor file, " << this->outputFileName << ". \n"; 

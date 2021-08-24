@@ -1,0 +1,101 @@
+.TH "FileReader" 3 "Tue Aug 24 2021" "CodeGenerator" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FileReader
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FileReader\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFileReader\fP ()"
+.br
+.ti -1c
+.RI "\fBFileReader\fP (std::string fileName)"
+.br
+.ti -1c
+.RI "std::string \fBgetFileName\fP ()"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBgetLines\fP ()"
+.br
+.ti -1c
+.RI "void \fBread\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBReplaceAll\fP (std::string str, const std::string &from, const std::string &to)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBFileReader\fP
+.PP
+Class designed to read an input text file escape characters and store each line in a vector 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FileReader::FileReader ()\fC [inline]\fP"
+Default constructor 
+.SS "FileReader::FileReader (std::string fileName)\fC [inline]\fP"
+Constructor that takes a file name Sets the input file handle to the file name provided 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfileName\fP a string argument\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string FileReader::getFileName ()\fC [inline]\fP"
+Getter Gets the input file name 
+.PP
+\fBReturns\fP
+.RS 4
+string 
+.RE
+.PP
+
+.SS "std::vector< std::string > FileReader::getLines ()\fC [inline]\fP"
+Getter Gets the lines vector 
+.PP
+\fBReturns\fP
+.RS 4
+vector of strings 
+.RE
+.PP
+
+.SS "void FileReader::read ()\fC [inline]\fP"
+Reads the input file, escapes characters and stores results in lines vector 
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "std::string FileReader::ReplaceAll (std::string str, const std::string & from, const std::string & to)\fC [inline]\fP"
+Utility function to replace all characters Taken from /https://stackoverflow\&.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstr\fP a string with content to find 
+.br
+\fIfrom\fP string to find 
+.br
+\fIto\fP string to replace 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+string 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CodeGenerator from the source code\&.

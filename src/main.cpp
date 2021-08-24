@@ -1,3 +1,10 @@
+/***************************************************************************//**
+ * Code Generator
+ *
+ * Reads a file and generates a cpp or py file to build copies of that file
+ *
+ *  ******************************************************************************/
+
 #include <iostream>
 #include <cstring>
 #include <vector>
@@ -12,14 +19,28 @@ std::string getFlagArgument(std::string flag, std::vector<std::string> arguments
 void checkForOutputFileName(std::string &outputFileName, FileCreator::OutputTypes &outputType, int &errorCode, std::vector<std::string> &arguments);
 bool validateOutputType(std::string &outputFileName, FileCreator::OutputTypes &outputFileType);
 
-//Supported File extensions
+/**
+* A vector of supported input File Types
+*/
 std::vector<std::string> SupportedFileTypes = { ".html", ".HTML", ".C", ".c", 
                                                 ".cpp", ".CPP",".php", ".PHP",
                                                 ".py", ".PY", ".JAVA", ".java",
                                                 ".kt", ".KT", ".js", ".JS", 
                                                 ".txt", ".TXT", ".h", ".H" };
+/**
+* A vector of supported output File Types
+*/
 std::vector<std::string> SupportedOutputTypes = { ".CPP", ".cpp", ".PY", ".py" };
 
+/**
+ * Main function that handles provided arguments
+ * reads the provided file with the FileReader class
+ * and creates a resulting output file using the 
+ * FileCreator class
+ * @param argc integer for total number of arguments
+ * @param argv a character array of arguments
+ * @return int
+ */
 int main(int argc, char *argv[])
 {
     std::string fileName; 
@@ -44,6 +65,21 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+/**
+ * Function that handles user provided arguments
+ * Checks to make sure required file name, -o flag 
+ * and output file name are set by the user and if not
+ * errors are generated. Validates fileName with 
+ * validateFileType function and  output fileName
+ * using checkForOutputFileName function to make sure
+ * they are supported and generates an error if not. 
+ * @param argc integer for total number of arguments
+ * @param argv a character array of arguments
+ * @param fileName string 
+ * @param outputTypes ileCreator::OutputTypes Enum Value for output type
+ * @param outputFileName string
+ * @return int
+ */
 int handleArguments(int argc, char *argv[], std::string &fileName, FileCreator::OutputTypes &outputType, std::string &outputFileName)
 {
     int errorCode = 0; 
@@ -91,6 +127,13 @@ int handleArguments(int argc, char *argv[], std::string &fileName, FileCreator::
     return errorCode; 
 }
 
+/**
+ * Function that checks if a fileName has an extension
+ * in the SupportedFileTypes vector and returns true if
+ * sp and false if not. 
+ * @param fileName string 
+ * @return bool
+ */
 bool validateFileType(std::string &fileName)
 {
     std::string fileNameLC = stringToLower(fileName);
@@ -104,6 +147,16 @@ bool validateFileType(std::string &fileName)
     return false; 
 }
 
+/**
+ * Function that checks if an output fileName has an 
+ * extension in the SupportedOutputTypes vector and 
+ * returns true if sp and false if not. Also sets the
+ * outputTypes to the appropriate FileCreator::OutputTypes
+ * enum value 
+ * @param fileName string 
+ * @param outputTypes ileCreator::OutputTypes Enum Value for output type
+ * @return bool
+ */
 bool validateOutputType(std::string &outputFileName, FileCreator::OutputTypes &outputFileType)
 {
     std::string outputFileNameLC = stringToLower(outputFileName);
@@ -125,7 +178,16 @@ bool validateOutputType(std::string &outputFileName, FileCreator::OutputTypes &o
     return false; 
 }
 
-//http://cplusplus.com/forum/beginner/218745/
+/**
+ * Function that converts a string to lower case
+ * Taken from //http://cplusplus.com/forum/beginner/218745/
+ * extension in the SupportedOutputTypes vector and 
+ * returns true if sp and false if not. Also sets the
+ * outputTypes to the appropriate FileCreator::OutputTypes
+ * enum value 
+ * @param str string 
+ * @return string
+ */
 std::string stringToLower(std::string str)
 {
     for (size_t i=0; i<str.size(); ++i) 
@@ -138,6 +200,14 @@ std::string stringToLower(std::string str)
     return str; 
 }
 
+/**
+ * Function that checks if a flag exists in a
+ * set of vector of provided arguments. Returns 
+ * true if so and false if not. 
+ * @param flag string 
+ * @param arguments vector of strings 
+ * @return bool
+ */
 bool flagExists(std::string flag, std::vector<std::string> arguments)
 {
     for(std::string f : arguments)
@@ -150,6 +220,15 @@ bool flagExists(std::string flag, std::vector<std::string> arguments)
     return false;
 }
 
+/**
+ * Function that checks if a flag exists in a
+ * vector of provided arguments and returns
+ * the argument immediately after it. Returns 
+ * "-1" if not found.  
+ * @param flag string 
+ * @param arguments vector of strings 
+ * @return string
+ */
 std::string getFlagArgument(std::string flag, std::vector<std::string> arguments)
 {
     std::string arg; 
@@ -165,6 +244,19 @@ std::string getFlagArgument(std::string flag, std::vector<std::string> arguments
     return "-1";
 }
 
+/**
+ * Function that checks if -o flag exists
+ * and if an output fileName is provided 
+ * using the getFlagArgument. Then it 
+ * valideates the outputFileType using the
+ * validateOutputType function. If an error 
+ * is found the error code is set to 1. 
+ * @param outputFileName string
+ * @param outputFileType ileCreator::OutputTypes Enum Value for output type
+ * @param errorCode int 
+ * @param arguments vector of strings 
+ * @return void
+ */
 void checkForOutputFileName(std::string &outputFileName, FileCreator::OutputTypes &outputFileType, int &errorCode, std::vector<std::string> &arguments)
 {
     if(flagExists("-o", arguments))

@@ -1,0 +1,82 @@
+.TH "CPPFileCreator" 3 "Tue Aug 24 2021" "CodeGenerator" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CPPFileCreator
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <CPPFileCreator\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCPPFileCreator\fP ()"
+.br
+.ti -1c
+.RI "\fBCPPFileCreator\fP (std::string outputFileName, std::vector< std::string > lines)"
+.br
+.ti -1c
+.RI "void \fBcreateHeader\fP ()"
+.br
+.ti -1c
+.RI "void \fBcreateCloser\fP ()"
+.br
+.ti -1c
+.RI "void \fBwrite\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBCPPFileCreator\fP
+.PP
+Class creates a CPP File to build files containing the strings in the lines vector 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CPPFileCreator::CPPFileCreator ()\fC [inline]\fP"
+Default constructor 
+.SS "CPPFileCreator::CPPFileCreator (std::string outputFileName, std::vector< std::string > lines)\fC [inline]\fP"
+Constructor that takes an output file name, and lines vector Sets the properties to the values provided and opens the output file using the out file handle 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoutputFileName\fP a string argument\&. 
+.br
+\fIlines\fP a vector of strings\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void CPPFileCreator::createCloser ()\fC [inline]\fP"
+Writes C++ code to the out file handle that closes the written codes output file handle and main function 
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "void CPPFileCreator::createHeader ()\fC [inline]\fP"
+Writes C++ code to the out file handle to build a main function that parses a fileName argument and creates an output file handle 
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "void CPPFileCreator::write ()\fC [inline]\fP"
+Writes C++ code to the out file handle that writes c++ code to write each line in the lines vector 
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CodeGenerator from the source code\&.

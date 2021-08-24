@@ -1,0 +1,67 @@
+\hypertarget{_c_p_p_file_creator_8h_source}{}\doxysection{CPPFile\+Creator.\+h}
+\label{_c_p_p_file_creator_8h_source}\index{src/CPPFileCreator.h@{src/CPPFileCreator.h}}
+\mbox{\hyperlink{_c_p_p_file_creator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{4 \textcolor{comment}{/***************************************************************************/}}
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_c_p_p_file_creator}{CPPFileCreator}}\{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keyword}{private}:}
+\DoxyCodeLine{13         std::string outputFileName; }
+\DoxyCodeLine{15         std::ofstream out; }
+\DoxyCodeLine{16         std::vector<std::string> lines; }
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \mbox{\hyperlink{class_c_p_p_file_creator_a2a90b805ab1fba336322e75cbecfba7d}{CPPFileCreator}}()\{\}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{33         \mbox{\hyperlink{class_c_p_p_file_creator_abb046bc19f19b961801f80d641845878}{CPPFileCreator}}(std::string outputFileName, std::vector<std::string> lines)}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35             this-\/>outputFileName = outputFileName;}
+\DoxyCodeLine{36             this-\/>lines = lines; }
+\DoxyCodeLine{37             this-\/>out.open(outputFileName, std::ios::out);}
+\DoxyCodeLine{38         \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_p_p_file_creator_a1466e193997fdecaf9c98898ef5a6437}{createHeader}}()}
+\DoxyCodeLine{48         \{}
+\DoxyCodeLine{49             this-\/>out << \textcolor{stringliteral}{"{}\#include <iostream>\(\backslash\)n"{}};}
+\DoxyCodeLine{50             this-\/>out << \textcolor{stringliteral}{"{}\#include <fstream>\(\backslash\)n"{}};}
+\DoxyCodeLine{51             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{52             this-\/>out << \textcolor{stringliteral}{"{}int main(int argc, char *argv[])\(\backslash\)n"{}};}
+\DoxyCodeLine{53             this-\/>out << \textcolor{stringliteral}{"{}\{\(\backslash\)n"{}};}
+\DoxyCodeLine{54             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)/\(\backslash\)/Default output file is output.cpp\(\backslash\)n"{}};}
+\DoxyCodeLine{55             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)tstd::string fileName = \(\backslash\)"{}output.cpp\(\backslash\)"{};\(\backslash\)n"{}};}
+\DoxyCodeLine{56             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)tif(argc > 1)\(\backslash\)n"{}};}
+\DoxyCodeLine{57             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)t\{\(\backslash\)n"{}};}
+\DoxyCodeLine{58             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)t \(\backslash\)/\(\backslash\)/First argument is the filename\(\backslash\)n"{}};}
+\DoxyCodeLine{59             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)tfileName = argv[1];\(\backslash\)n"{}};}
+\DoxyCodeLine{60             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)t\};\(\backslash\)n"{}};}
+\DoxyCodeLine{61             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)tstd::ofstream out;\(\backslash\)n"{}};}
+\DoxyCodeLine{62             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)tout.open(fileName, std::ios::out);\(\backslash\)n"{}};}
+\DoxyCodeLine{63             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{64             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)t//Write Lines found in Input File \(\backslash\)n"{}}; }
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{73         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_p_p_file_creator_a76bbe843fda7b20f534d8e30969337e2}{createCloser}}()}
+\DoxyCodeLine{74         \{}
+\DoxyCodeLine{75             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{76             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)tout.close();\(\backslash\)n"{}};}
+\DoxyCodeLine{77             this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)treturn 0;\(\backslash\)n"{}};}
+\DoxyCodeLine{78             this-\/>out << \textcolor{stringliteral}{"{}\}"{}};}
+\DoxyCodeLine{79         \}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{87         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_c_p_p_file_creator_acb2aa5ba267b44fdc85d780988ba7633}{write}}()}
+\DoxyCodeLine{88         \{}
+\DoxyCodeLine{89             std::cout << \textcolor{stringliteral}{"{}Writing constructor file, "{}} << this-\/>outputFileName << \textcolor{stringliteral}{"{}. \(\backslash\)n"{}}; }
+\DoxyCodeLine{90             this-\/>\mbox{\hyperlink{class_c_p_p_file_creator_a1466e193997fdecaf9c98898ef5a6437}{createHeader}}(); }
+\DoxyCodeLine{91             \textcolor{keywordflow}{for}(std::string line : lines)}
+\DoxyCodeLine{92             \{}
+\DoxyCodeLine{93                 this-\/>out << \textcolor{stringliteral}{"{}\(\backslash\)tout << \(\backslash\)"{}"{}} <<  line << \textcolor{stringliteral}{"{}\(\backslash\)"{} << \(\backslash\)"{}\(\backslash\)\(\backslash\)n\(\backslash\)"{};"{}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}}; }
+\DoxyCodeLine{94             \}}
+\DoxyCodeLine{95             this-\/>\mbox{\hyperlink{class_c_p_p_file_creator_a76bbe843fda7b20f534d8e30969337e2}{createCloser}}();}
+\DoxyCodeLine{96             this-\/>out.close();}
+\DoxyCodeLine{97             std::cout << this-\/>outputFileName << \textcolor{stringliteral}{"{} has been created. \(\backslash\)n"{}}; }
+\DoxyCodeLine{98         \}}
+\DoxyCodeLine{99 \};}
+
+\end{DoxyCode}
