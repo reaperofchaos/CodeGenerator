@@ -21,7 +21,10 @@ The code is run using the command line <br />
 
 <b>-o</b> [FILENAME]        outputFile
                      REQUIRED
-                     The output file extension in the output filename is used to determine if a python or cpp builder file needs to be created to generate the input file provided. Any other filetypes will generate an error. 
+                     The output file extension in the output filename is
+                     used to determine if a python or cpp builder file 
+                     needs to be created to generate the input file 
+                     provided. Any other filetypes will generate an error. 
 </pre>
 
 # Build Instructions
