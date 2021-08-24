@@ -5,4 +5,4 @@ include(CheckCCompilerFlag)
 
 set(CMAKE_HOST_SYSTEM_PROCESSOR "arm64")
 
-add_executable(${PROJECTNAME} main.cpp FileReader.cpp FileCreator.cpp)
+add_executable(${PROJECTNAME} main.cpp FileReader.cpp FileCreator.cpp CPPFileCreator.cpp PythonFileCreator.cpp)

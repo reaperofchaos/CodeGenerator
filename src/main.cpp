@@ -4,14 +4,13 @@
 #include "FileReader.h"
 #include "FileCreator.h"
 
-int handleArguments(int argc, char *argv[], std::string &fileName, std::string &outputType, std::string &outputFileName);
+int handleArguments(int argc, char *argv[], std::string &fileName, FileCreator::OutputTypes &outputType, std::string &outputFileName);
 bool validateFileType(std::string &fileName);
-bool validateOutputType(std::string &outputType);
 std::string stringToLower(std::string str);
 bool flagExists(std::string flag, std::vector<std::string> arguments);
 std::string getFlagArgument(std::string flag, std::vector<std::string> arguments);
-void checkForOutputFileName(std::string &outputFileName, int &errorCode, std::vector<std::string> &arguments);
-void checkForOutputType(std::string &outputType, int &errorCode,  std::vector<std::string> &arguments);
+void checkForOutputFileName(std::string &outputFileName, FileCreator::OutputTypes &outputType, int &errorCode, std::vector<std::string> &arguments);
+bool validateOutputType(std::string &outputFileName, FileCreator::OutputTypes &outputFileType);
 
 //Supported File extensions
 std::vector<std::string> SupportedFileTypes = { ".html", ".HTML", ".C", ".c", 
@@ -19,13 +18,13 @@ std::vector<std::string> SupportedFileTypes = { ".html", ".HTML", ".C", ".c",
                                                 ".py", ".PY", ".JAVA", ".java",
                                                 ".kt", ".KT", ".js", ".JS", 
                                                 ".txt", ".TXT", ".h", ".H" };
-std::vector<std::string> SupportedOutputTypes = { "cpp", "CPP" };
+std::vector<std::string> SupportedOutputTypes = { ".CPP", ".cpp", ".PY", ".py" };
 
 int main(int argc, char *argv[])
 {
     std::string fileName; 
-    std::string outputType;
     std::string outputFileName;
+    FileCreator::OutputTypes outputType;
     //parse arguments
     int errorCode = handleArguments(argc, argv, fileName, outputType, outputFileName);
     // std::cout << "Input File Name: " << fileName << "\n"
@@ -37,6 +36,7 @@ int main(int argc, char *argv[])
         FileReader f = FileReader(fileName);
         f.read();
         std::vector<std::string> lines = f.getLines();
+
         FileCreator o = FileCreator(outputFileName, outputType, lines);
         o.write();
     }
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-int handleArguments(int argc, char *argv[], std::string &fileName, std::string &outputType, std::string &outputFileName)
+int handleArguments(int argc, char *argv[], std::string &fileName, FileCreator::OutputTypes &outputType, std::string &outputFileName)
 {
     int errorCode = 0; 
     std::vector<std::string> arguments(argv + 1, argv + argc);
@@ -73,8 +73,8 @@ int handleArguments(int argc, char *argv[], std::string &fileName, std::string &
         }
         if(argc > 2)
         {
-            checkForOutputType(outputType, errorCode, arguments);
-            checkForOutputFileName(outputFileName, errorCode, arguments);
+            //checkForOutputType(outputType, errorCode, arguments);
+            checkForOutputFileName(outputFileName, outputType, errorCode, arguments);
         }
         else
         {
@@ -102,16 +102,23 @@ bool validateFileType(std::string &fileName)
         }
     }
     return false; 
-    
 }
 
-bool validateOutputType(std::string &outputType)
+bool validateOutputType(std::string &outputFileName, FileCreator::OutputTypes &outputFileType)
 {
-    std::string outputTypeLC = stringToLower(outputType);
+    std::string outputFileNameLC = stringToLower(outputFileName);
     for(std::string f : SupportedOutputTypes)
     {
-        if(f == outputType)
-        {
+        if(outputFileNameLC.find(f, outputFileNameLC.size()-4) != std::string::npos)
+        {  
+            if(f == ".py")
+            {
+                outputFileType = FileCreator::PY;
+            }
+            else if(f == ".cpp")
+            {
+                outputFileType = FileCreator::CPP;
+            }
             return true;
         }
     }
@@ -158,17 +165,15 @@ std::string getFlagArgument(std::string flag, std::vector<std::string> arguments
     return "-1";
 }
 
-void checkForOutputType(std::string &outputType, int &errorCode, std::vector<std::string> &arguments)
+void checkForOutputFileName(std::string &outputFileName, FileCreator::OutputTypes &outputFileType, int &errorCode, std::vector<std::string> &arguments)
 {
-    //check for -t flag
-    if(flagExists("-t", arguments))
+    if(flagExists("-o", arguments))
     {
-        outputType = getFlagArgument("-t", arguments);
+        outputFileName = getFlagArgument("-o", arguments);
         //check if parameter provided
-        if(outputType != "-1")
+        if(outputFileName != "-1")
         {
-            //check if valid
-            if(!validateOutputType(outputType))
+            if(!validateOutputType(outputFileName, outputFileType))
             {
                 std::cout << "Error: Invalid Output Type (Only ";
                 bool first = true; 
@@ -179,28 +184,10 @@ void checkForOutputType(std::string &outputType, int &errorCode, std::vector<std
                     first = false; 
                 }
                 std::cout << " outputs can be generated.)";
+                errorCode = 1; 
             }
         }
         else
-        {
-            std::cout << "The -t parameter requires an output type such as cpp. Program will now exit. \n";
-            errorCode = 1; 
-        }
-    }
-    else
-    {
-        std::cout << "The -t parameter with an output file type is required. Program will now exit. \n";
-        errorCode = 1; 
-    }
-}
-
-void checkForOutputFileName(std::string &outputFileName, int &errorCode, std::vector<std::string> &arguments)
-{
-    if(flagExists("-o", arguments))
-    {
-        outputFileName = getFlagArgument("-o", arguments);
-        //check if parameter provided
-        if(outputFileName == "-1")
         {
             std::cout << "The -o parameter requires an output filename. Program will now exit. \n";
             errorCode = 1; 
