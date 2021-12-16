@@ -68,7 +68,7 @@ main.o:
 
 run:
 	cp test.cpp build/test.cpp
-	./$(CMDTARGET) -t cpp -o test.cpp
+	./$(CMDTARGET) test.cpp -o  newTest.cpp
 
 clean:
 	rm -f objs/*.o $(TARGET)

@@ -22,8 +22,7 @@ class FileCreator
         enum OutputTypes { 
           CPP, /**< enum value CPP. */  
           PY, /**< enum value PY. */  
-         }    
-        enum OutputTypes {CPP, PY};
+         };
 
     private:
         std::string outputFileName; /**< Name of Output File */  

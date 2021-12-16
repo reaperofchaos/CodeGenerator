@@ -7,7 +7,6 @@
  * Class creates a PY File to build files containing the strings in the lines vector
  *
  *  ******************************************************************************/
-c
 class PythonFileCreator{
 
     private:

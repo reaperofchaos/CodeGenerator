@@ -51,11 +51,11 @@ class CPPFileCreator{
             this->out << "\n";
             this->out << "int main(int argc, char *argv[])\n";
             this->out << "{\n";
-            this->out << "\t\/\/Default output file is output.cpp\n";
+            this->out << "\t////Default output file is output.cpp\n";
             this->out << "\tstd::string fileName = \"output.cpp\";\n";
             this->out << "\tif(argc > 1)\n";
             this->out << "\t{\n";
-            this->out << "\t\t \/\/First argument is the filename\n";
+            this->out << "\t\t ////First argument is the filename\n";
             this->out << "\t\tfileName = argv[1];\n";
             this->out << "\t};\n";
             this->out << "\tstd::ofstream out;\n";
