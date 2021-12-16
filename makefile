@@ -66,7 +66,7 @@ cmd: $(CMDOBJS)
 cmdWin: $(CMDOBJS)
 	$(LD) -o $(CMDTARGET_WIN) $(CMDOBJSDIR) $(CMDCCFLAGS)
 
-cmdWin: $(CMDOBJS)
+cmdOSX: $(CMDOBJS)
 	$(LD) -o $(CMDTARGET_OSX) $(CMDOBJSDIR) $(CMDCCFLAGS)
 	
 FileCreator.o:
