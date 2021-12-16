@@ -38,7 +38,7 @@ jobs:
     - name: make
       run: make cmdWin
     - name: cleanup
-      run: rm -rf objs
+      run: rd -r objs
     - name: upload code generator
       uses: actions/upload-artifact@v2
       with:
