@@ -1,12 +1,14 @@
 #project name
 NAME=CodeGenerator
 NAME_WIN=CodeGenerator.exe
+NAME_OSX=CodeGenerator_OSX
 
 # change application name  (executable output name)
 TARGET=build/CodeGenerator
 
 CMDTARGET=build/${NAME}
 CMDTARGET_WIN=build/${NAME_WIN}
+CMDTARGET_OSX=build/${NAME_OSX}
 
 # compiler
 CC=g++
@@ -63,6 +65,9 @@ cmd: $(CMDOBJS)
 
 cmdWin: $(CMDOBJS)
 	$(LD) -o $(CMDTARGET_WIN) $(CMDOBJSDIR) $(CMDCCFLAGS)
+
+cmdWin: $(CMDOBJS)
+	$(LD) -o $(CMDTARGET_OSX) $(CMDOBJSDIR) $(CMDCCFLAGS)
 	
 FileCreator.o:
 	$(CC) -c $(CMDCCFLAGS) src/FileCreator.cpp -o objs/FileCreator.o
