@@ -1,0 +1,65 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  linux_build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: create object folder
+      run: mkdir objs
+    - name: create build folder
+      run: mkdir build
+    - name: make
+      run: make cmd
+    - name: cleanup
+      run: rm -rf objs
+    - name: upload code generator
+      uses: actions/upload-artifact@v2
+      with:
+        name: codegenerator linux
+        path: codegenerator_linux
+      
+  windows_build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: create object folder
+      run: mkdir objs
+    - name: create build folder
+      run: mkdir build
+    - name: make
+      run: make cmd
+    - name: cleanup
+      run: rm -rf objs
+    - name: upload code generator
+      uses: actions/upload-artifact@v2
+      with:
+        name: codegenerator windows
+        path: codegenerator_win64.exe
+
+  osx_build:
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: create object folder
+      run: mkdir objs
+    - name: create build folder
+      run: mkdir build
+    - name: make
+      run: make cmd
+    - name: cleanup
+      run: rm -rf objs
+    - name: upload code generator
+      uses: actions/upload-artifact@v2
+      with:
+        name: codegenerator mac
+        path: codegenerator_osx
