@@ -1,9 +1,13 @@
 #project name
 NAME=CodeGenerator
+NAME_WIN=CodeGenerator.exe
+
 # change application name  (executable output name)
 TARGET=build/CodeGenerator
 
-CMDTARGET=build/CodeGenerator
+CMDTARGET=build/${NAME}
+CMDTARGET_WIN=build/${NAME_WIN}
+
 # compiler
 CC=g++
 # debug
@@ -56,6 +60,9 @@ all: $(OBJS)
 
 cmd: $(CMDOBJS)
 	$(LD) -o $(CMDTARGET) $(CMDOBJSDIR) $(CMDCCFLAGS)
+
+cmdWin: $(CMDOBJS)
+	$(LD) -o $(CMDTARGET_WIN) $(CMDOBJSDIR) $(CMDCCFLAGS)
 	
 FileCreator.o:
 	$(CC) -c $(CMDCCFLAGS) src/FileCreator.cpp -o objs/FileCreator.o
