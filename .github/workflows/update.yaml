@@ -57,7 +57,7 @@ jobs:
     - name: make
       run: make cmdOSX
     - name: cleanup
-      run: rmdir objs
+      run: rm -rf objs
     - name: upload code generator
       uses: actions/upload-artifact@v2
       with:
