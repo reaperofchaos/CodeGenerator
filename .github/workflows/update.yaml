@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: codegenerator linux
-        path: codegenerator_linux
+        path: build/CodeGenerator
       
   windows_build:
     runs-on: windows-latest
@@ -36,14 +36,14 @@ jobs:
     - name: create build folder
       run: mkdir build
     - name: make
-      run: make cmd
+      run: make cmdWin
     - name: cleanup
       run: rm -rf objs
     - name: upload code generator
       uses: actions/upload-artifact@v2
       with:
-        name: codegenerator windows
-        path: codegenerator_win64.exe
+        name: CodeGenerator.exe
+        path: build/CodeGenerator.exe
 
   osx_build:
     runs-on: macOS-latest
@@ -55,11 +55,11 @@ jobs:
     - name: create build folder
       run: mkdir build
     - name: make
-      run: make cmd
+      run: make cmdOSX
     - name: cleanup
-      run: rm -rf objs
+      run: rmdir objs
     - name: upload code generator
       uses: actions/upload-artifact@v2
       with:
-        name: codegenerator mac
-        path: codegenerator_osx
+        name: CodeGenerator_OSX
+        path: build/CodeGenerator_OSX
