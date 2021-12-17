@@ -30,8 +30,9 @@ jobs:
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
+      env:
+        GITHUB_TOKeN: ${{ github.token }}
       with:
-        repo-token: ${{secrets.GITHUB_TOKEN }}
         tag_name: ${{ github.ref }}
         release_name: Release Linux ${{ github.ref }}
         draft: false
