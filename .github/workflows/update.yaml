@@ -35,8 +35,11 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Release Linux ${{ github.ref }}
+        body: |
+          Changes in this release
+          - Initial build
         draft: false
-        prerelease: true
+        prerelease: false
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
