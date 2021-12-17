@@ -9,9 +9,8 @@ on:
 jobs:
 
   linux_build:
-
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
     - name: create object folder
@@ -27,29 +26,7 @@ jobs:
       with:
         name: codegenerator_linux
         path: build/CodeGenerator
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release Linux ${{ github.ref }}
-        body: |
-          Changes in this release
-          - Initial build
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./build/CodeGenerator
-        asset_name: codegenerator_linux
-        asset_content_type: application/exe
+    
       
   windows_build:
     runs-on: windows-latest
@@ -69,26 +46,6 @@ jobs:
       with:
         name: CodeGenerator.exe
         path: build/CodeGenerator.exe
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release Windows ${{ github.ref }}
-        draft: false
-        prerelease: true
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./build/CodeGenerator.exe
-        asset_name: codegenerator_windows
-        asset_content_type: application/exe
         
   osx_build:
     runs-on: macOS-latest
@@ -118,13 +75,55 @@ jobs:
         release_name: Release OSX ${{ github.ref }}
         draft: false
         prerelease: true
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./build/CodeGenerator_OSX
-        asset_name: codegenerator_osx
-        asset_content_type: application/exe
+
+
+  release_builds: 
+    needs: [linux_build, windows_build, osx_build]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release Linux ${{ github.ref }}
+          body: |
+            Changes in this release
+            - Initial build
+          draft: false
+          prerelease: false
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
+      - name: Upload Linux release
+        id: upload-linux-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: CodeGenerator
+          asset_name: codegenerator_linux
+          asset_content_type: application/exe
+      - name: Upload Release Asset osx
+        id: upload-osx-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: CodeGenerator_OSX
+          asset_name: codegenerator_osx
+          asset_content_type: application/exe
+      - name: Upload Release Asset windows
+        id: upload-windows-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: CodeGenerator.exe
+          asset_name: CodeGenerator_windows.exe
+          asset_content_type: application/exe
