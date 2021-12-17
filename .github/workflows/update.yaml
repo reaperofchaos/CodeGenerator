@@ -31,7 +31,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_SECRET }}
       with:
         tag_name: ${{ github.ref }}
         release_name: Release Linux ${{ github.ref }}
@@ -68,7 +68,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_SECRET }}
       with:
         tag_name: ${{ github.ref }}
         release_name: Release Windows ${{ github.ref }}
@@ -105,7 +105,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_SECRET }}
       with:
         tag_name: ${{ github.ref }}
         release_name: Release OSX ${{ github.ref }}
