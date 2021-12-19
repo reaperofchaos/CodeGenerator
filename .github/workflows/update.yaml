@@ -65,16 +65,6 @@ jobs:
       with:
         name: CodeGenerator_OSX
         path: build/CodeGenerator_OSX
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release OSX ${{ github.ref }}
-        draft: false
-        prerelease: true
 
 
   release_builds: 
@@ -94,7 +84,7 @@ jobs:
             Changes in this release
             - Initial build
           draft: false
-          prerelease: false
+          prerelease: true
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
       - name: Upload Linux release
