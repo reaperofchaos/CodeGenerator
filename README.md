@@ -8,7 +8,7 @@ written in one programming language such as php if I want to automate the genera
 This code reads the code you want to copy and generates a cpp or a python file to do that job. Future updates will allow for more file types. 
 This should speed up any modifications needed to automate a class if only a few portions of the code need to change. 
 <br />
-
+Change
 # Usage
 The code is run using the command line <br />
 
